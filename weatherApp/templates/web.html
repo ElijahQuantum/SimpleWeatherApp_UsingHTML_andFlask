@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> class = "title">Weather Forecast</title>
+    <link rel  ="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background">
+        <h1 class="title">Weather Forecast</h1>
+    </div>
+    <form action="/weather" method="post">
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" name="city" placeholder="Enter City" value="{{ city or '' }}" class="placeholder">
+        <br><br>
+
+        <label for="unit">Unit:</label>
+        <input type="text" id="unit" name="unit" placeholder="metric or imperial" value="{{ unit or 'metric' }}" class="placeholder">
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if weather %}
+        <h2>Weather Information{% if city %} for {{ city }}{% endif %}</h2>
+        <ul>
+            <li>Temperature: {{ weather.temperature if weather.temperature is not none else 'N/A' }}{% if weather.temperature is not none %}°{% endif %}</li>
+            <li>Humidity: {{ weather.humidity if weather.humidity is not none else 'N/A' }}%</li>
+            <li>Weather: {{ weather.description }}</li>
+        </ul>
+    {% endif %}
+</body>
+</html>
+
+</body>
+
+</html>

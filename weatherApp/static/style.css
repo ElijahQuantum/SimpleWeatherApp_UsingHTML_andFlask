@@ -1,0 +1,14 @@
+.title  {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
+.background {
+    background-color: aqua;
+}
+
+.placeholder {
+    color: aqua;
+    font-size: 20px;
+}
